@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280">
+  <rect width="760" height="280" fill="#f8fafc"/>
+  <text x="24" y="32" font-size="16" font-family="sans-serif" fill="#0f172a">Keep DHCP away from static IPs</text>
+  <rect x="40" y="60" width="200" height="180" rx="8" fill="#fff" stroke="#94a3b8"/>
+  <text x="140" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">.1 gateway</text>
+  <rect x="270" y="60" width="200" height="180" rx="8" fill="#fff" stroke="#94a3b8"/>
+  <text x="370" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">.2-.50 static</text>
+  <rect x="500" y="60" width="220" height="180" rx="8" fill="#fff" stroke="#94a3b8"/>
+  <text x="610" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">.100-.200 DHCP</text>
+</svg>

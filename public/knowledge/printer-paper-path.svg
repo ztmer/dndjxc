@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300">
+  <rect width="760" height="300" fill="#f8fafc"/>
+  <text x="24" y="32" font-size="16" font-family="sans-serif" fill="#0f172a">Laser printer paper path</text>
+  <rect x="40" y="70" width="140" height="70" rx="8" fill="#fff" stroke="#94a3b8"/>
+  <text x="110" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">Tray</text>
+  <rect x="250" y="60" width="180" height="90" rx="8" fill="#fff" stroke="#94a3b8"/>
+  <text x="340" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">Toner</text>
+  <rect x="500" y="60" width="200" height="90" rx="8" fill="#fff" stroke="#94a3b8"/>
+  <text x="600" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">Fuser</text>
+  <rect x="500" y="200" width="200" height="64" rx="8" fill="#fff" stroke="#94a3b8"/>
+  <text x="600" y="238" text-anchor="middle" font-size="14" font-family="sans-serif">Exit</text>
+  <path d="M180 105 H250 M430 105 H500 M600 150 V200" stroke="#0f172a" stroke-width="2" fill="none"/>
+</svg>

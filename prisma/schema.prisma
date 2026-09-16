@@ -1,0 +1,884 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id             String   @id @default(cuid())
+  username       String   @unique
+  passwordHash   String
+  displayName    String
+  role           String   @default("clerk") // owner | clerk
+  canSeeCost     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}
+
+model Company {
+  id          String @id @default("default")
+  name        String
+  address     String @default("")
+  phone       String @default("")
+  email       String @default("")
+  fax         String @default("")
+  legalPerson String @default("")
+  taxNo       String @default("")
+  bank        String @default("")
+  bankAccount String @default("")
+  logoFile    String @default("") // data/company 下文件名，如 logo.png
+  sealFile    String @default("") // 公章图片，如 seal.png
+}
+
+/** 登录页/浏览器标题等对外展示 */
+model SiteSetting {
+  id        String @id @default("default")
+  title     String @default("电脑店系统")
+  subtitle  String @default("客户时间线 · 工单 · 串号保修 · 门店仓")
+  copyright String @default("")
+  icp       String @default("")
+  loginHint String @default("")
+  wechat    String @default("")
+}
+
+/** 自动备份、日志保留 */
+model MaintainSetting {
+  id              String    @id @default("default")
+  autoBackupOn    Boolean   @default(true)
+  backupEveryDays Int       @default(1)
+  lastBackupAt    DateTime?
+  autoCleanLogOn  Boolean   @default(true)
+  logKeepDays     Int       @default(90)
+  lastLogCleanAt  DateTime?
+}
+
+/** 开单规则：出库是否必须扫唯一 SN；期初可补旧单 */
+model ShopBizSetting {
+  id               String  @id @default("default")
+  forceOutboundSn  Boolean @default(false)
+  /** 打开后销售/工单可录期初旧单：自选日期、不走库存、金额进未收 */
+  openingMode      Boolean @default(false)
+}
+
+/** 工单报表发企业微信群机器人 */
+model WecomSetting {
+  id         String  @id @default("default")
+  enabled    Boolean @default(false)
+  webhookUrl String  @default("")
+  onCreate   Boolean @default(true)
+  onSubmit   Boolean @default(true)
+  mentionAll Boolean @default(false)
+  /** JSON 数组：salesOrder / workOrder / deliveryNote / contract / installSheet */
+  docTypes   String  @default("[\"workOrder\"]")
+}
+
+/** 新建配置「从套餐带入」；店里可增改删 */
+model DiyKit {
+  id        String  @id @default(cuid())
+  code      String  @unique
+  name      String
+  scene     String  @default("家用办公")
+  hint      String  @default("")
+  laborFee  String  @default("150")
+  sale      Decimal @default(0)
+  cost      Decimal @default(0)
+  cpu       String  @default("")
+  gpu       String  @default("")
+  mb        String  @default("")
+  ram       String  @default("")
+  remark    String  @default("")
+  partsJson String  @default("[]")
+  sort      Int     @default(0)
+  enabled   Boolean @default(true)
+}
+
+model AppLog {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  level     String   @default("info")
+  module    String   @default("")
+  action    String
+  detail    String   @default("")
+  username  String   @default("")
+
+  @@index([createdAt])
+}
+
+model Warehouse {
+  id        String          @id @default(cuid())
+  code      String          @unique
+  name      String
+  isDefault Boolean         @default(true)
+  balances  StockBalance[]
+  ledgers   StockLedger[]
+}
+
+model Customer {
+  id               String   @id @default(cuid())
+  code             String   @unique
+  name             String
+  contactName      String   @default("") // 联系人
+  phone            String   @default("")
+  address          String   @default("")
+  isWalkIn         Boolean  @default(false)
+  settlement       String   @default("cash") // cash | monthly | yearly
+  remark           String   @default("")
+  needInvoice      Boolean  @default(false) // 要开发票才填税务信息
+  invoiceTitle     String   @default("") // 发票抬头
+  taxNo            String   @default("") // 纳税人识别号
+  invoiceBank      String   @default("")
+  invoiceAccount   String   @default("")
+  invoiceAddress   String   @default("")
+  invoicePhone     String   @default("")
+  priceMemory      Boolean  @default(true) // 开单记住该客户上次单价
+  createdAt        DateTime @default(now())
+  sites            Site[]
+  assets           CustomerAsset[]
+  productPrices    CustomerProductPrice[]
+  salesOrders      SalesOrder[]
+  salesReturns     SalesReturn[]
+  buildConfigs     BuildConfig[]
+  workOrders       WorkOrder[]
+  contracts        Contract[]
+  statements       Statement[]
+  receipts         Receipt[]
+  arEntries        ArEntry[]
+  timeline         TimelineEvent[]
+  serials          SerialNumber[]
+  broadbandAccounts CustomerBroadband[]
+  netDevices        CustomerNetDevice[]
+  ipAddrs           CustomerIpAddr[]
+  wifiNetworks      CustomerWifi[]
+}
+
+/** 客户上次成交价，开单带出 */
+model CustomerProductPrice {
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  price      Decimal
+  updatedAt  DateTime @updatedAt
+
+  @@id([customerId, productId])
+}
+
+model Site {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+  name       String
+  address    String   @default("")
+  assets     CustomerAsset[]
+  workOrders WorkOrder[]
+  projects   Project[]
+  broadbandAccounts CustomerBroadband[]
+  netDevices        CustomerNetDevice[]
+  ipAddrs           CustomerIpAddr[]
+  wifiNetworks      CustomerWifi[]
+}
+
+/** 客户宽带账号：接入号、拨号、位置。改完后客户页与网络页读同一张表。 */
+model CustomerBroadband {
+  id        String   @id @default(cuid())
+  customerId String
+  customer  Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  siteId    String?
+  site      Site?    @relation(fields: [siteId], references: [id], onDelete: SetNull)
+  account   String   @default("") // 宽带/拨号账号
+  password  String   @default("")
+  accessNo  String   @default("") // 接入号
+  isp       String   @default("") // 运营商
+  vlan      String   @default("")
+  location  String   @default("")
+  remark    String   @default("")
+  updatedAt DateTime @updatedAt
+
+  @@index([customerId])
+}
+
+/** 客户侧网络设备台账（交换机/路由/光猫），字段对齐常见运维工具箱。 */
+model CustomerNetDevice {
+  id              String   @id @default(cuid())
+  customerId      String
+  customer        Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  siteId          String?
+  site            Site?    @relation(fields: [siteId], references: [id], onDelete: SetNull)
+  name            String
+  ip              String   @default("")
+  vendor          String   @default("") // huawei h3c ruijie cisco zte tplink other
+  kind            String   @default("switch") // switch router firewall wlc onu ap other
+  protocol        String   @default("ssh") // ssh telnet http
+  port            Int      @default(22)
+  username        String   @default("")
+  password        String   @default("")
+  enablePassword  String   @default("")
+  model           String   @default("")
+  serial          String   @default("")
+  location        String   @default("")
+  remark          String   @default("")
+  updatedAt       DateTime @updatedAt
+  ipAddrs         CustomerIpAddr[]
+
+  @@index([customerId])
+  @@index([ip])
+}
+
+/** 客户 IP 地址规划：网关、打印机、监控等。可从局域网扫描写入。 */
+model CustomerIpAddr {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  siteId     String?
+  site       Site?    @relation(fields: [siteId], references: [id], onDelete: SetNull)
+  address    String
+  mask       String   @default("24")
+  name       String   @default("") // 设备名称，扫描主机名可改
+  mac        String   @default("")
+  hostname   String   @default("")
+  usage      String   @default("") // 网关 / 打印机 / 服务器
+  deviceId   String?
+  device     CustomerNetDevice? @relation(fields: [deviceId], references: [id], onDelete: SetNull)
+  remark     String   @default("")
+  updatedAt  DateTime @updatedAt
+
+  @@index([customerId])
+  @@index([address])
+}
+
+/** 客户现场 Wi-Fi：SSID 和密码由店里登记，不是扫出来的。 */
+model CustomerWifi {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  siteId     String?
+  site       Site?    @relation(fields: [siteId], references: [id], onDelete: SetNull)
+  ssid       String
+  password   String   @default("")
+  band       String   @default("") // 2.4 / 5 / 6
+  location   String   @default("")
+  remark     String   @default("")
+  updatedAt  DateTime @updatedAt
+
+  @@index([customerId])
+}
+
+model Supplier {
+  id          String             @id @default(cuid())
+  name        String
+  contactName String             @default("")
+  phone       String             @default("")
+  address     String             @default("")
+  remark      String             @default("")
+  receipts    PurchaseReceipt[]
+  serials     SerialNumber[]
+}
+
+model ProductCategory {
+  id        String            @id @default(cuid())
+  code      String            @unique
+  name      String
+  parentId  String?
+  parent    ProductCategory?  @relation("CatTree", fields: [parentId], references: [id], onDelete: Restrict)
+  children  ProductCategory[] @relation("CatTree")
+  sort      Int               @default(0)
+  defaultTrackSerial Boolean  @default(false) // 主板/CPU/内存/硬盘/显卡/显示器等默认管唯一 SN
+  products    Product[]
+  catalogSkus CatalogSku[]
+
+  @@index([parentId, sort])
+}
+
+/** 商品品牌：本店主数据，开单/商品资料从这里选。清空业务时保留。 */
+model ProductBrand {
+  id     String @id @default(cuid())
+  name   String @unique
+  sort   Int    @default(0)
+  remark String @default("")
+}
+
+/** 产品目录：市面型号图文规格，不记本店库存 */
+model CatalogSku {
+  id                     String           @id @default(cuid())
+  code                   String           @unique
+  name                   String
+  brand                  String           @default("")
+  spec                   String           @default("")
+  params                 String           @default("") // 详细参数，纯文本
+  unit                   String           @default("件")
+  category               String           @default("")
+  categoryId             String?
+  categoryNode           ProductCategory? @relation(fields: [categoryId], references: [id])
+  imageUrl               String           @default("") // 同 Product.imageUrl，二进制不进库
+  remark                 String           @default("")
+  suggestedSale          Decimal          @default(0)
+  suggestedCost          Decimal          @default(0)
+  defaultWarrantyMonths  Int              @default(12)
+  defaultIsStocked       Boolean          @default(true)
+  defaultTrackSerial     Boolean          @default(false)
+  defaultCanBeBuildPart  Boolean          @default(true)
+  product                Product?
+  updatedAt              DateTime         @updatedAt
+
+  @@index([categoryId])
+  @@index([brand])
+}
+
+model Product {
+  id             String           @id @default(cuid())
+  code           String           @unique
+  name           String
+  brand          String           @default("") // 品牌
+  spec           String           @default("") // 型号规格
+  unit           String           @default("件")
+  barcode        String           @default("") // 商品条码
+  category       String           @default("") // 冗余路径，如 组装电脑 / 内存
+  categoryId     String?
+  categoryNode   ProductCategory? @relation(fields: [categoryId], references: [id])
+  catalogSkuId   String?          @unique
+  catalogSku     CatalogSku?      @relation(fields: [catalogSkuId], references: [id])
+  isStocked      Boolean          @default(true)
+  trackSerial    Boolean          @default(false) // 管唯一 SN
+  commonSn       String           @default("") // 通用 SN / 型号条码，同款共用
+  canBeBuildPart Boolean          @default(true)
+  salePrice      Decimal          @default(0) // 销售单价
+  lastCost       Decimal          @default(0) // 进价
+  saleWarrantyMonths     Int      @default(12)
+  purchaseWarrantyMonths Int      @default(12)
+  lowStock       Decimal          @default(0)
+  remark         String           @default("")
+  imageUrl       String           @default("") // 店内上传 /api/product-images/{id}；目录种子图 /product-images/；也可外链。二进制不进库
+  enabled        Boolean          @default(true)
+  balances       StockBalance[]
+  ledgers        StockLedger[]
+  serials        SerialNumber[]
+  customerPrices CustomerProductPrice[]
+
+  @@index([commonSn])
+  @@index([barcode])
+  @@index([categoryId])
+}
+
+model StockBalance {
+  id          String    @id @default(cuid())
+  warehouseId String
+  warehouse   Warehouse @relation(fields: [warehouseId], references: [id])
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id])
+  qty         Decimal   @default(0)
+
+  @@unique([warehouseId, productId])
+}
+
+model StockLedger {
+  id          String    @id @default(cuid())
+  warehouseId String
+  warehouse   Warehouse @relation(fields: [warehouseId], references: [id])
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id])
+  qty         Decimal   // 正入负出
+  balanceAfter Decimal 
+  refType     String
+  refId       String
+  refNo       String
+  remark      String    @default("")
+  createdAt   DateTime  @default(now())
+}
+
+model SerialNumber {
+  id              String   @id @default(cuid())
+  sn              String   @unique // 唯一 SN，一物一码
+  commonSn        String   @default("") // 冗余商品通用 SN，便于对照
+  productId       String
+  product         Product  @relation(fields: [productId], references: [id])
+  supplierId      String?
+  supplier        Supplier? @relation(fields: [supplierId], references: [id])
+  purchaseDocNo   String   @default("")
+  inboundAt       DateTime?
+  status          String   @default("in_stock") // in_stock sold installed returned scrapped rma
+  purchaseWarranty DateTime?
+  saleWarranty     DateTime?
+  customerId      String?
+  customer        Customer? @relation(fields: [customerId], references: [id])
+  saleDocNo       String   @default("")
+  soldAt          DateTime?
+  siteId          String?
+  assetId         String?
+  repairCount     Int      @default(0)
+  remark          String   @default("")
+
+  @@index([commonSn])
+}
+
+model CustomerAsset {
+  id          String    @id @default(cuid())
+  customerId  String
+  customer    Customer  @relation(fields: [customerId], references: [id])
+  siteId      String?
+  site        Site?     @relation(fields: [siteId], references: [id])
+  name        String
+  sn          String    @default("")
+  warrantyEnd DateTime?
+}
+
+model NumberSeq {
+  prefix String @id
+  next   Int    @default(1)
+}
+
+model PurchaseRequest {
+  id        String                 @id @default(cuid())
+  docNo     String                 @unique
+  status    String                 @default("open") // open filled cancelled
+  sourceType String
+  sourceId  String
+  sourceNo  String
+  remark    String                 @default("")
+  createdAt DateTime               @default(now())
+  lines     PurchaseRequestLine[]
+}
+
+model PurchaseRequestLine {
+  id        String          @id @default(cuid())
+  headerId  String
+  header    PurchaseRequest @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  productId String
+  qty       Decimal        
+  filledQty Decimal         @default(0)
+  receiptLines PurchaseReceiptLine[]
+}
+
+model PurchaseReceipt {
+  id         String                @id @default(cuid())
+  docNo      String                @unique
+  status     String                @default("draft")
+  supplierId String?
+  supplier   Supplier?             @relation(fields: [supplierId], references: [id])
+  bizDate    DateTime              @default(now())
+  remark     String                @default("")
+  createdAt  DateTime              @default(now())
+  submittedAt DateTime?
+  voidedAt   DateTime?
+  lines      PurchaseReceiptLine[]
+}
+
+model PurchaseReceiptLine {
+  id                     String               @id @default(cuid())
+  headerId               String
+  header                 PurchaseReceipt      @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  productId              String
+  qty                    Decimal             
+  cost                   Decimal             
+  serialsJson            String               @default("[]")
+  purchaseWarrantyMonths Int                  @default(12)
+  purchaseRequestLineId  String?
+  purchaseRequestLine    PurchaseRequestLine? @relation(fields: [purchaseRequestLineId], references: [id])
+}
+
+model OtherReceipt {
+  id        String             @id @default(cuid())
+  docNo     String             @unique
+  status    String             @default("draft")
+  bizDate   DateTime           @default(now())
+  remark    String             @default("")
+  createdAt DateTime           @default(now())
+  submittedAt DateTime?
+  voidedAt  DateTime?
+  lines     OtherReceiptLine[]
+}
+
+model OtherReceiptLine {
+  id          String       @id @default(cuid())
+  headerId    String
+  header      OtherReceipt @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  productId   String
+  qty         Decimal     
+  cost        Decimal      @default(0)
+  serialsJson String       @default("[]")
+}
+
+model OtherIssue {
+  id        String           @id @default(cuid())
+  docNo     String           @unique
+  status    String           @default("draft")
+  reason    String           @default("self_use") // self_use scrap gift
+  bizDate   DateTime         @default(now())
+  remark    String           @default("")
+  createdAt DateTime         @default(now())
+  submittedAt DateTime?
+  voidedAt  DateTime?
+  lines     OtherIssueLine[]
+}
+
+model OtherIssueLine {
+  id          String     @id @default(cuid())
+  headerId    String
+  header      OtherIssue @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  productId   String
+  qty         Decimal   
+  serialsJson String     @default("[]")
+}
+
+model SalesOrder {
+  id           String          @id @default(cuid())
+  docNo        String          @unique
+  status       String          @default("draft")
+  customerId   String
+  customer     Customer        @relation(fields: [customerId], references: [id])
+  settlement   String
+  bizDate      DateTime        @default(now())
+  remark       String          @default("")
+  laterDelivery Boolean        @default(false) // 先开单后送货，唯一 SN 可后补
+  booksOnly     Boolean        @default(false) // 期初旧单：不走库存，只记应收
+  taxInclusive  Boolean        @default(true) // 本单金额是否含税
+  needInvoice   Boolean        @default(false)
+  invoiceType   String         @default("") // plain 普票 | special 专票
+  materialAmt  Decimal         @default(0)
+  serviceAmt   Decimal         @default(0)
+  totalAmt     Decimal         @default(0)
+  buildConfigId String?        @unique
+  buildConfig  BuildConfig?    @relation(fields: [buildConfigId], references: [id])
+  createdAt    DateTime        @default(now())
+  submittedAt  DateTime?
+  voidedAt     DateTime?
+  lines        SalesOrderLine[]
+  returns      SalesReturn[]
+}
+
+model SalesOrderLine {
+  id            String       @id @default(cuid())
+  headerId      String
+  header        SalesOrder   @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  productId     String
+  qty           Decimal     
+  price         Decimal     
+  amount        Decimal     
+  isStocked     Boolean      @default(true)
+  serialsJson   String       @default("[]")
+  saleWarrantyMonths Int     @default(12)
+  returnedQty   Decimal      @default(0)
+  returnLines   SalesReturnLine[]
+}
+
+model SalesReturn {
+  id          String            @id @default(cuid())
+  docNo       String            @unique
+  status      String            @default("draft")
+  customerId  String
+  customer    Customer          @relation(fields: [customerId], references: [id])
+  salesOrderId String
+  salesOrder  SalesOrder        @relation(fields: [salesOrderId], references: [id])
+  bizDate     DateTime          @default(now())
+  remark      String            @default("")
+  totalAmt    Decimal           @default(0)
+  createdAt   DateTime          @default(now())
+  submittedAt DateTime?
+  voidedAt    DateTime?
+  lines       SalesReturnLine[]
+}
+
+model SalesReturnLine {
+  id              String         @id @default(cuid())
+  headerId        String
+  header          SalesReturn    @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  salesOrderLineId String
+  salesOrderLine  SalesOrderLine @relation(fields: [salesOrderLineId], references: [id])
+  productId       String
+  qty             Decimal       
+  amount          Decimal       
+  serialsJson     String         @default("[]")
+}
+
+model BuildConfig {
+  id          String            @id @default(cuid())
+  docNo       String            @unique
+  status      String            @default("draft")
+  customerId  String
+  customer    Customer          @relation(fields: [customerId], references: [id])
+  modelName   String
+  laborFee    Decimal           @default(0)
+  unitSn      String            @default("")
+  remark      String            @default("")
+  bizDate     DateTime          @default(now())
+  createdAt   DateTime          @default(now())
+  submittedAt DateTime?
+  voidedAt    DateTime?
+  lines       BuildConfigLine[]
+  salesOrder  SalesOrder?
+}
+
+model BuildConfigLine {
+  id          String      @id @default(cuid())
+  headerId    String
+  header      BuildConfig @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  productId   String
+  slot        String      @default("")
+  qty         Decimal    
+  price       Decimal    
+  amount      Decimal    
+  serialsJson String      @default("[]")
+}
+
+model Contract {
+  id               String            @id @default(cuid())
+  docNo            String            @unique
+  status           String            @default("draft")
+  customerId       String
+  customer         Customer          @relation(fields: [customerId], references: [id])
+  title            String
+  amount           Decimal          
+  warrantyMonths   Int               @default(12)
+  settlement       String
+  signDate         DateTime          @default(now())
+  durationNote     String            @default("")
+  taxInclusive     Boolean           @default(true) // 合同额是否含税
+  needInvoice      Boolean           @default(false) // 本单要开票（不做税务申报）
+  invoiceType      String            @default("") // plain 普票 | special 专票
+  remark           String            @default("")
+  createdAt        DateTime          @default(now())
+  submittedAt      DateTime?
+  voidedAt         DateTime?
+  schedules        ContractSchedule[]
+  projects         Project[]
+}
+
+model ContractSchedule {
+  id         String   @id @default(cuid())
+  contractId String
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  name       String
+  amount     Decimal 
+  dueDate    DateTime?
+}
+
+model Project {
+  id           String      @id @default(cuid())
+  docNo        String      @unique
+  contractId   String
+  contract     Contract    @relation(fields: [contractId], references: [id])
+  siteId       String?
+  site         Site?       @relation(fields: [siteId], references: [id])
+  name         String
+  progress     String      @default("not_started") // not_started in_progress accepted in_warranty
+  acceptedAt   DateTime?
+  warrantyEnd  DateTime?
+  remark       String      @default("")
+  workOrders   WorkOrder[]
+}
+
+model WorkOrder {
+  id           String           @id @default(cuid())
+  docNo        String           @unique
+  status       String           @default("draft")
+  woStatus     String           @default("pending") // pending in_progress done
+  customerId   String
+  customer     Customer         @relation(fields: [customerId], references: [id])
+  siteId       String?
+  site         Site?            @relation(fields: [siteId], references: [id])
+  projectId    String?
+  project      Project?         @relation(fields: [projectId], references: [id])
+  visitType    String           @default("onsite") // onsite instore outsource
+  appointedAt  DateTime?
+  processNote  String           @default("")
+  nextAdvice   String           @default("")
+  settlement   String
+  bizDate      DateTime         @default(now())
+  booksOnly    Boolean          @default(false) // 期初旧单：不走库存，只记应收
+  materialAmt  Decimal          @default(0)
+  serviceAmt   Decimal          @default(0)
+  billableAmt  Decimal          @default(0) // 实际计入应收
+  createdAt    DateTime         @default(now())
+  submittedAt  DateTime?
+  voidedAt     DateTime?
+  lines        WorkOrderLine[]
+  labors       DayLabor[]
+  returns      WorkOrderReturn[]
+}
+
+model WorkOrderLine {
+  id              String             @id @default(cuid())
+  headerId        String
+  header          WorkOrder          @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  productId       String
+  qty             Decimal           
+  price           Decimal           
+  amount          Decimal           
+  isStocked       Boolean            @default(true)
+  isWarrantyFree  Boolean            @default(false)
+  isContractExtra Boolean            @default(false)
+  serialsJson     String             @default("[]")
+  returnedQty     Decimal            @default(0)
+  returnLines     WorkOrderReturnLine[]
+}
+
+model WorkOrderReturn {
+  id          String                 @id @default(cuid())
+  docNo       String                 @unique
+  status      String                 @default("draft")
+  workOrderId String
+  workOrder   WorkOrder              @relation(fields: [workOrderId], references: [id])
+  bizDate     DateTime               @default(now())
+  remark      String                 @default("")
+  createdAt   DateTime               @default(now())
+  submittedAt DateTime?
+  voidedAt    DateTime?
+  lines       WorkOrderReturnLine[]
+}
+
+model WorkOrderReturnLine {
+  id               String        @id @default(cuid())
+  headerId         String
+  header           WorkOrderReturn @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  workOrderLineId  String
+  workOrderLine    WorkOrderLine @relation(fields: [workOrderLineId], references: [id])
+  productId        String
+  qty              Decimal      
+  serialsJson      String        @default("[]")
+}
+
+model DayLabor {
+  id          String    @id @default(cuid())
+  workOrderId String
+  workOrder   WorkOrder @relation(fields: [workOrderId], references: [id], onDelete: Cascade)
+  name        String
+  workDate    DateTime
+  days        Decimal  
+  dayRate     Decimal  
+  amount      Decimal  
+}
+
+model ArEntry {
+  id           String    @id @default(cuid())
+  customerId   String
+  customer     Customer  @relation(fields: [customerId], references: [id])
+  sourceType   String
+  sourceId     String
+  sourceNo     String
+  bizDate      DateTime
+  settlement   String
+  materialAmt  Decimal  
+  serviceAmt   Decimal  
+  totalAmt     Decimal  
+  receivedAmt  Decimal   @default(0)
+  statementId  String?
+  statement    Statement? @relation(fields: [statementId], references: [id])
+  voided       Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+
+  @@index([customerId, settlement, voided])
+  @@index([sourceType, sourceId])
+}
+
+model Statement {
+  id          String      @id @default(cuid())
+  docNo       String      @unique
+  status      String      @default("draft") // draft confirmed voided
+  customerId  String
+  customer    Customer    @relation(fields: [customerId], references: [id])
+  periodType  String      // monthly yearly weekly custom
+  periodStart DateTime
+  periodEnd   DateTime
+  totalAmt    Decimal     @default(0)
+  receivedAmt Decimal     @default(0)
+  createdAt   DateTime    @default(now())
+  confirmedAt DateTime?
+  arEntries   ArEntry[]
+}
+
+model Receipt {
+  id          String        @id @default(cuid())
+  docNo       String        @unique
+  status      String        @default("draft")
+  customerId  String
+  customer    Customer      @relation(fields: [customerId], references: [id])
+  method      String        // cash wechat alipay transfer
+  bizDate     DateTime      @default(now())
+  amount      Decimal      
+  remark      String        @default("")
+  createdAt   DateTime      @default(now())
+  submittedAt DateTime?
+  voidedAt    DateTime?
+  lines       ReceiptLine[]
+}
+
+model ReceiptLine {
+  id        String   @id @default(cuid())
+  headerId  String
+  header    Receipt  @relation(fields: [headerId], references: [id], onDelete: Cascade)
+  arEntryId String
+  amount    Decimal 
+}
+
+model TimelineEvent {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+  eventType  String
+  refType    String
+  refId      String
+  refNo      String
+  summary    String
+  amount     Decimal  @default(0)
+  createdAt  DateTime @default(now())
+
+  @@index([customerId, createdAt])
+}
+
+model PrintTemplate {
+  id        String  @id @default(cuid())
+  bizType   String
+  name      String
+  isDefault Boolean @default(false)
+  html      String
+}
+
+/** 店内可自行增改的单据/报表版式，与业务数据分离 */
+model ReportFormat {
+  id         String   @id @default(cuid())
+  bizType    String
+  name       String
+  paper      String   @default("A4") // A4 | 210x140 | ticket
+  html       String   @default("")
+  configJson String   @default("{}") // 可视化版式，不存手写 HTML
+  remark     String   @default("")
+  isDefault  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([bizType])
+}
+
+model LaborRateHint {
+  id      String  @id @default(cuid())
+  name    String  @unique
+  dayRate Decimal
+}
+
+model KnowledgeCategory {
+  id       String              @id @default(cuid())
+  code     String              @unique
+  name     String
+  sort     Int                 @default(0)
+  articles KnowledgeArticle[]
+}
+
+/** 维修常识：现象 + 办法，不走进销存 */
+model KnowledgeArticle {
+  id                   String             @id @default(cuid())
+  code                 String             @unique
+  title                String
+  categoryId           String
+  category             KnowledgeCategory  @relation(fields: [categoryId], references: [id])
+  symptoms             String             @default("")
+  solution             String             @default("")
+  tags                 String             @default("")
+  relatedCategoryCode  String             @default("")
+  relatedSkuCode       String             @default("")
+  sort                 Int                @default(0)
+  enabled              Boolean            @default(true)
+  updatedAt            DateTime           @updatedAt
+
+  @@index([categoryId, sort])
+}

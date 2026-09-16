@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" role="img" aria-label="three layer switch">
+  <rect width="800" height="340" fill="#f8fafc"/>
+  <text x="24" y="32" font-size="16" font-family="sans-serif" fill="#0f172a">VLAN inside L2, between VLANs via SVI</text>
+  <rect x="40" y="70" width="220" height="200" rx="10" fill="#fff" stroke="#94a3b8"/>
+  <text x="150" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">VLAN 10</text>
+  <rect x="290" y="70" width="220" height="200" rx="10" fill="#fff" stroke="#0f172a"/>
+  <text x="400" y="120" text-anchor="middle" font-size="14" font-family="sans-serif">L3 switch</text>
+  <rect x="540" y="70" width="220" height="200" rx="10" fill="#fff" stroke="#94a3b8"/>
+  <text x="650" y="110" text-anchor="middle" font-size="14" font-family="sans-serif">VLAN 20</text>
+</svg>

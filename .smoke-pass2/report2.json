@@ -1,0 +1,220 @@
+{
+  "printerOffline": {
+    "q": "打印机",
+    "titlePart": "打印机脱机",
+    "found": true,
+    "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+    "title": "打印机脱机、打不出来",
+    "solutionText": "解决办法\n\n1. 打印机本身能否打测试页，分清是机器坏还是电脑问题。\n2. 取消脱机、清打印队列、重启 Print Spooler。\n3. USB 换口换线；网络机看 IP 是否变了，重新添加 TCP/IP 端口。\n4. 驱动用型号对应的，Win11 不要硬装 Win7 包。\n5. 共享打印：关客户电脑休眠，检查工作组/权限。",
+    "solutionHtml": "<div data-slot=\"card-header\" class=\"group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)\"><div data-slot=\"card-title\" class=\"font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm\">解决办法</div></div><div data-slot=\"card-content\" class=\"px-(--card-spacing)\"><div class=\"space-y-3 text-sm leading-6\"><p class=\"whitespace-pre-wrap\">1. 打印机本身能否打测试页，分清是机器坏还是电脑问题。\n2. 取消脱机、清打印队列、重启 Print Spooler。\n3. USB 换口换线；网络机看 IP 是否变了，重新添加 TCP/IP 端口。\n4. 驱动用型号对应的，Win11 不要硬装 Win7 包。\n5. 共享打印：关客户电脑休眠，检查工作组/权限。</p></div></div>",
+    "formSolution": "脱机、队列卡住、电脑能看到打印机但没反应。",
+    "imgs": [],
+    "hasMarkdown": false
+  },
+  "printerJam": {
+    "q": "打印机",
+    "titlePart": "卡纸",
+    "found": false
+  },
+  "sw": {
+    "q": "交换机",
+    "titlePart": "三层交换机",
+    "found": false
+  },
+  "staticFiles": [
+    {
+      "path": "/knowledge/printer-paper-path.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "starts": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 300\">\n  <rect width=\"76",
+      "len": 1061
+    },
+    {
+      "path": "/knowledge/switch-3layer.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "starts": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 340\" role=\"img\" aria-la",
+      "len": 847
+    },
+    {
+      "path": "/knowledge/ip-segments.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "starts": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 280\">\n  <rect width=\"76",
+      "len": 808
+    },
+    {
+      "path": "/product-images/PRT-L3251.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "starts": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" w",
+      "len": 1080
+    }
+  ],
+  "customers": [
+    {
+      "href": "/customers/cmtz8kyis0000zkr2ugba8tk1",
+      "code": "C0013",
+      "name": "【关卡C】手机建档",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmtyfluz800005gr2sib0yeln",
+      "code": "C0012",
+      "name": "【SN环yfluua】串号客户",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmtyfl5yd0000acr2jakkaw5t",
+      "code": "C0011",
+      "name": "【SN环yfl5ra】串号客户",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmtyfixxv0000ocr2qfawbuo5",
+      "code": "C0010",
+      "name": "【SN环yfixry】串号客户",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmtyfioxg0000ogr2lyifxwin",
+      "code": "C0009",
+      "name": "【SN环yfiorz】串号客户",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmty2dou30002xwr2l0bnygx5",
+      "code": "C0008",
+      "name": "【全测09120729】散客散客",
+      "walkIn": true
+    },
+    {
+      "href": "/customers/cmty2dotr0000xwr2o59usmgi",
+      "code": "C0007",
+      "name": "【全测09120729】月结单位开票",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmty2dgfr0002i4r2n2swnkyo",
+      "code": "C0006",
+      "name": "【全测09120728】散客散客",
+      "walkIn": true
+    },
+    {
+      "href": "/customers/cmty2dgfe0000i4r2dows8dui",
+      "code": "C0005",
+      "name": "【全测09120728】月结单位开票",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmty26ycc000248r2t5p3aq6o",
+      "code": "C0004",
+      "name": "【全测09120723】散客散客",
+      "walkIn": true
+    },
+    {
+      "href": "/customers/cmty26yc0000048r2nodskh44",
+      "code": "C0003",
+      "name": "【全测09120723】月结单位开票",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmtvno7zt0004tcr2gfr93wmg",
+      "code": "C0002",
+      "name": "星辰网络开票",
+      "walkIn": false
+    },
+    {
+      "href": "/customers/cmtvno7zl0003tcr2ly2o63ms",
+      "code": "C0001",
+      "name": "散客散客",
+      "walkIn": true
+    }
+  ],
+  "customerDetail": {
+    "unit": {
+      "href": "/customers/cmtyfluz800005gr2sib0yeln",
+      "code": "C0012",
+      "name": "【SN环yfluua】串号客户",
+      "walkIn": false
+    },
+    "fields": {
+      "h2": "网络资料",
+      "labels": [
+        "宽带账号",
+        "密码",
+        "接入号",
+        "运营商",
+        "VLAN",
+        "位置",
+        "点位",
+        "备注",
+        "设备名称",
+        "管理 IP",
+        "类型",
+        "厂商",
+        "协议",
+        "端口",
+        "用户名",
+        "Enable 密码",
+        "型号",
+        "序列号",
+        "描述",
+        "IP",
+        "掩码",
+        "用途",
+        "挂到设备"
+      ],
+      "text": "网络资料\n调试工具\n接口 JSON\n宽带账号\n账号、密码、接入号、位置。改完后网络页自动同一份数据。\n宽带账号\n密码\n看\n接入号\n运营商\nVLAN\n位置\n点位\n不指定点位\n备注\n添加宽带\n网络设备\n交换机 / 路由 / 光猫。字段对齐常见运维台账。\n设备名称\n管理 IP\n类型\n交换机\n路由器\n防火墙\n无线控制器\n光猫/ONU\n无线AP\n其他\n厂商\n华为\n华三\n锐捷\n思科\n中兴\nTP-LINK\n海康\n其他\n协议\nSSH\nTelnet\nHTTP/Web\n端口\n用户名\n密码\nEnable 密码\n型号\n序列号\n位置\n点位\n不指定点位\n描述\n添加设备\nIP 地址\n网关、打印机、监控等固定地址，避免和 DHCP 打架。\nIP\n掩码\n用途\n挂到设备\n不关联\n点位\n不指定点位\n备注\n添加地址"
+    },
+    "apiStatus": 200,
+    "keys": [
+      "customer",
+      "sites",
+      "accounts",
+      "devices",
+      "ips"
+    ],
+    "nestedKeys": [
+      "customer",
+      "customer.id",
+      "customer.code",
+      "customer.name",
+      "customer.phone",
+      "customer.address",
+      "sites",
+      "accounts",
+      "devices",
+      "ips"
+    ],
+    "json": {
+      "customer": {
+        "id": "cmtyfluz800005gr2sib0yeln",
+        "code": "C0012",
+        "name": "【SN环yfluua】串号客户",
+        "phone": "",
+        "address": ""
+      },
+      "sites": [],
+      "accounts": [],
+      "devices": [],
+      "ips": []
+    },
+    "counts": {
+      "sites": 0,
+      "accounts": 0,
+      "devices": 0,
+      "ips": 0
+    }
+  },
+  "tools": {
+    "ping": true,
+    "subnet": true,
+    "defaultIp": [
+      "",
+      "",
+      "192.168.1.10",
+      "24"
+    ]
+  }
+}

@@ -1,0 +1,517 @@
+{
+  "ok": true,
+  "bugs": [],
+  "notes": [
+    {
+      "title": "knowledge",
+      "detail": {
+        "queryUsed": "打印机",
+        "title": "打印机脱机、打不出来",
+        "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+        "imageCount": 0,
+        "brokenCount": 0,
+        "images": []
+      }
+    },
+    {
+      "title": "customer",
+      "detail": {
+        "chosen": {
+          "href": "/customers/cmtz8kyis0000zkr2ugba8tk1",
+          "name": "【关卡C】手机建档",
+          "walkIn": false
+        },
+        "fields": {
+          "missing": false,
+          "h2": "网络资料",
+          "headings": [
+            "网络资料",
+            "宽带账号",
+            "网络设备",
+            "IP 地址"
+          ],
+          "labels": [
+            "宽带账号",
+            "密码",
+            "接入号",
+            "运营商",
+            "VLAN",
+            "位置",
+            "点位",
+            "备注",
+            "设备名称",
+            "管理 IP",
+            "类型",
+            "厂商",
+            "协议",
+            "端口",
+            "用户名",
+            "Enable 密码",
+            "型号",
+            "序列号",
+            "描述",
+            "IP",
+            "掩码",
+            "用途",
+            "挂到设备"
+          ],
+          "cards": [
+            "网络资料",
+            "宽带账号",
+            "网络设备",
+            "IP 地址"
+          ],
+          "textSample": "网络资料\n调试工具\n接口 JSON\n宽带账号\n账号、密码、接入号、位置。改完后网络页自动同一份数据。\n宽带账号\n密码\n看\n接入号\n运营商\nVLAN\n位置\n点位\n不指定点位\n默认点位\n备注\n添加宽带\n网络设备\n交换机 / 路由 / 光猫。字段对齐常见运维台账。\n设备名称\n管理 IP\n类型\n交换机\n路由器\n防火墙\n无线控制器\n光猫/ONU\n无线AP\n其他\n厂商\n华为\n华三\n锐捷\n思科\n中兴\nTP-LINK\n海康\n其他\n协议\nSSH\nTelnet\nHTTP/Web\n端口\n用户名\n密码\nEnable 密码\n型号\n序列号\n位置\n点位\n不指定点位\n默认点位\n描述\n添加设备\nIP 地址\n网关、打印机、监控等固定地址，避免和 DHCP 打架。\nIP\n掩码\n用途\n挂到设备\n不关联\n点位\n不指定点位\n默认点位\n备注\n添加地址"
+        },
+        "apiStatus": 200,
+        "jsonKeys": [
+          "customer",
+          "customer.id",
+          "customer.code",
+          "customer.name",
+          "customer.phone",
+          "customer.address",
+          "sites",
+          "sites",
+          "sites[].id",
+          "sites[].name",
+          "sites[].address",
+          "accounts",
+          "accounts",
+          "devices",
+          "devices",
+          "ips",
+          "ips"
+        ]
+      }
+    },
+    {
+      "title": "tools",
+      "detail": {
+        "url": "http://192.168.10.104:3010/network/tools",
+        "titles": [
+          "网络调试工具",
+          "Ping / DNS",
+          "子网计算",
+          "常用命令"
+        ],
+        "buttons": [
+          "客户",
+          "销售",
+          "维修与工程",
+          "资料",
+          "仓库",
+          "报表与系统",
+          "办公台",
+          "柜台台",
+          "手机版",
+          "退出",
+          "查询",
+          "Ping",
+          "DNS 查询",
+          "计算"
+        ],
+        "labels": [
+          "目标",
+          "IP",
+          "掩码"
+        ],
+        "hasPing": true,
+        "hasDns": true,
+        "hasSubnet": true,
+        "hasCalc": true,
+        "pingPlaceholder": "192.168.1.1 或 www.baidu.com",
+        "visibleText": "店\n\n电脑店系统\n\n石湾焯智电脑\n\n工作台\n总览\n客户\n客户档案\n客户网络\n对账单\n收款单\n销售\n维修与工程\n资料\n仓库\n报表与系统\n\n当前系统由 石湾焯智电脑 完成\n\n页面\n\n办公台\n柜台台\n手机版\n退出\n查询\n总览\n知识库\n客户\n页面\n网络调试工具\n\nPing、DNS、子网计算、现场常用命令\n\nPing / DNS\n从本机服务器探测客户地址，只允许 IP 或主机名。\n目标\nPing\nDNS 查询\n结果会显示在这里\n子网计算\n划分固定段和 DHCP 段时用。\nIP\n掩码\n计算\n填 IP 和 24 位掩码后计算\n常用命令\n到客户现场在电脑上执行，不是扫描别人的网。\n\n本机地址\n\nWin：ipconfig /all\n\nLinux：ip addr\n\n清 DNS 缓存\n\nWin：ipconfig /flushdns\n\nLinux：systemd-resolve --flush-caches\n\n看网关\n\nWin：ipconfig | findstr /i gateway\n\nLinux：ip route\n\nPing 网关\n\nWin：ping -n 4 网关IP\n\nLinux：ping -c 4 网关IP\n\n路由跟踪\n\nWin：tracert 223.5.5.5\n\nLinux：traceroute 223.5.5.5\n\n查域名\n\nWin：nslookup www.baidu.com\n\nLinux：dig www.baidu.com\n\n邻居表\n\nWin：arp -a\n\nLinux：ip neigh\n\n端口占用\n\nWin：netstat -ano | findstr :80\n\nLinux：ss -lntp | grep :80"
+      }
+    },
+    {
+      "title": "knowledge",
+      "detail": {
+        "queryUsed": "打印机",
+        "title": "打印机脱机、打不出来",
+        "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+        "imageCount": 0,
+        "brokenCount": 0,
+        "images": []
+      }
+    },
+    {
+      "title": "customer",
+      "detail": {
+        "chosen": {
+          "href": "/customers/cmtz8kyis0000zkr2ugba8tk1",
+          "name": "【关卡C】手机建档",
+          "walkIn": false
+        },
+        "fields": {
+          "missing": false,
+          "h2": "网络资料",
+          "headings": [
+            "网络资料",
+            "宽带账号",
+            "网络设备",
+            "IP 地址"
+          ],
+          "labels": [
+            "宽带账号",
+            "密码",
+            "接入号",
+            "运营商",
+            "VLAN",
+            "位置",
+            "点位",
+            "备注",
+            "设备名称",
+            "管理 IP",
+            "类型",
+            "厂商",
+            "协议",
+            "端口",
+            "用户名",
+            "Enable 密码",
+            "型号",
+            "序列号",
+            "描述",
+            "IP",
+            "掩码",
+            "用途",
+            "挂到设备"
+          ],
+          "cards": [
+            "网络资料",
+            "宽带账号",
+            "网络设备",
+            "IP 地址"
+          ],
+          "textSample": "网络资料\n调试工具\n接口 JSON\n宽带账号\n账号、密码、接入号、位置。改完后网络页自动同一份数据。\n宽带账号\n密码\n看\n接入号\n运营商\nVLAN\n位置\n点位\n不指定点位\n默认点位\n备注\n添加宽带\n网络设备\n交换机 / 路由 / 光猫。字段对齐常见运维台账。\n设备名称\n管理 IP\n类型\n交换机\n路由器\n防火墙\n无线控制器\n光猫/ONU\n无线AP\n其他\n厂商\n华为\n华三\n锐捷\n思科\n中兴\nTP-LINK\n海康\n其他\n协议\nSSH\nTelnet\nHTTP/Web\n端口\n用户名\n密码\nEnable 密码\n型号\n序列号\n位置\n点位\n不指定点位\n默认点位\n描述\n添加设备\nIP 地址\n网关、打印机、监控等固定地址，避免和 DHCP 打架。\nIP\n掩码\n用途\n挂到设备\n不关联\n点位\n不指定点位\n默认点位\n备注\n添加地址"
+        },
+        "apiStatus": 200,
+        "jsonKeys": [
+          "customer",
+          "customer.id",
+          "customer.code",
+          "customer.name",
+          "customer.phone",
+          "customer.address",
+          "sites",
+          "sites",
+          "sites[].id",
+          "sites[].name",
+          "sites[].address",
+          "accounts",
+          "accounts",
+          "devices",
+          "devices",
+          "ips",
+          "ips"
+        ]
+      }
+    },
+    {
+      "title": "tools",
+      "detail": {
+        "url": "http://192.168.10.104:3010/network/tools",
+        "titles": [
+          "网络调试工具",
+          "Ping / DNS",
+          "子网计算",
+          "常用命令"
+        ],
+        "buttons": [
+          "客户",
+          "销售",
+          "维修与工程",
+          "资料",
+          "仓库",
+          "报表与系统",
+          "办公台",
+          "柜台台",
+          "手机版",
+          "退出",
+          "查询",
+          "Ping",
+          "DNS 查询",
+          "计算"
+        ],
+        "labels": [
+          "目标",
+          "IP",
+          "掩码"
+        ],
+        "hasPing": true,
+        "hasDns": true,
+        "hasSubnet": true,
+        "hasCalc": true,
+        "pingPlaceholder": "192.168.1.1 或 www.baidu.com",
+        "visibleText": "店\n\n电脑店系统\n\n石湾焯智电脑\n\n工作台\n总览\n客户\n客户档案\n客户网络\n对账单\n收款单\n销售\n维修与工程\n资料\n仓库\n报表与系统\n\n当前系统由 石湾焯智电脑 完成\n\n页面\n\n办公台\n柜台台\n手机版\n退出\n查询\n总览\n知识库\n客户\n页面\n网络调试工具\n\nPing、DNS、子网计算、现场常用命令\n\nPing / DNS\n从本机服务器探测客户地址，只允许 IP 或主机名。\n目标\nPing\nDNS 查询\n结果会显示在这里\n子网计算\n划分固定段和 DHCP 段时用。\nIP\n掩码\n计算\n填 IP 和 24 位掩码后计算\n常用命令\n到客户现场在电脑上执行，不是扫描别人的网。\n\n本机地址\n\nWin：ipconfig /all\n\nLinux：ip addr\n\n清 DNS 缓存\n\nWin：ipconfig /flushdns\n\nLinux：systemd-resolve --flush-caches\n\n看网关\n\nWin：ipconfig | findstr /i gateway\n\nLinux：ip route\n\nPing 网关\n\nWin：ping -n 4 网关IP\n\nLinux：ping -c 4 网关IP\n\n路由跟踪\n\nWin：tracert 223.5.5.5\n\nLinux：traceroute 223.5.5.5\n\n查域名\n\nWin：nslookup www.baidu.com\n\nLinux：dig www.baidu.com\n\n邻居表\n\nWin：arp -a\n\nLinux：ip neigh\n\n端口占用\n\nWin：netstat -ano | findstr :80\n\nLinux：ss -lntp | grep :80"
+      }
+    }
+  ],
+  "consoleErrors": [],
+  "pass1": {
+    "knowledge": {
+      "queryUsed": "打印机",
+      "title": "打印机脱机、打不出来",
+      "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+      "images": []
+    },
+    "customer": {
+      "customer": {
+        "href": "/customers/cmtz8kyis0000zkr2ugba8tk1",
+        "name": "【关卡C】手机建档",
+        "walkIn": false
+      },
+      "id": "cmtz8kyis0000zkr2ugba8tk1",
+      "fields": {
+        "missing": false,
+        "h2": "网络资料",
+        "headings": [
+          "网络资料",
+          "宽带账号",
+          "网络设备",
+          "IP 地址"
+        ],
+        "labels": [
+          "宽带账号",
+          "密码",
+          "接入号",
+          "运营商",
+          "VLAN",
+          "位置",
+          "点位",
+          "备注",
+          "设备名称",
+          "管理 IP",
+          "类型",
+          "厂商",
+          "协议",
+          "端口",
+          "用户名",
+          "Enable 密码",
+          "型号",
+          "序列号",
+          "描述",
+          "IP",
+          "掩码",
+          "用途",
+          "挂到设备"
+        ],
+        "cards": [
+          "网络资料",
+          "宽带账号",
+          "网络设备",
+          "IP 地址"
+        ],
+        "textSample": "网络资料\n调试工具\n接口 JSON\n宽带账号\n账号、密码、接入号、位置。改完后网络页自动同一份数据。\n宽带账号\n密码\n看\n接入号\n运营商\nVLAN\n位置\n点位\n不指定点位\n默认点位\n备注\n添加宽带\n网络设备\n交换机 / 路由 / 光猫。字段对齐常见运维台账。\n设备名称\n管理 IP\n类型\n交换机\n路由器\n防火墙\n无线控制器\n光猫/ONU\n无线AP\n其他\n厂商\n华为\n华三\n锐捷\n思科\n中兴\nTP-LINK\n海康\n其他\n协议\nSSH\nTelnet\nHTTP/Web\n端口\n用户名\n密码\nEnable 密码\n型号\n序列号\n位置\n点位\n不指定点位\n默认点位\n描述\n添加设备\nIP 地址\n网关、打印机、监控等固定地址，避免和 DHCP 打架。\nIP\n掩码\n用途\n挂到设备\n不关联\n点位\n不指定点位\n默认点位\n备注\n添加地址"
+      },
+      "json": {
+        "customer": {
+          "id": "cmtz8kyis0000zkr2ugba8tk1",
+          "code": "C0013",
+          "name": "【关卡C】手机建档",
+          "phone": "13900009113",
+          "address": ""
+        },
+        "sites": [
+          {
+            "id": "cmtz8kyj00001zkr2oob87og3",
+            "name": "默认点位",
+            "address": ""
+          }
+        ],
+        "accounts": [],
+        "devices": [],
+        "ips": []
+      },
+      "keys": [
+        "customer",
+        "customer.id",
+        "customer.code",
+        "customer.name",
+        "customer.phone",
+        "customer.address",
+        "sites",
+        "sites",
+        "sites[].id",
+        "sites[].name",
+        "sites[].address",
+        "accounts",
+        "accounts",
+        "devices",
+        "devices",
+        "ips",
+        "ips"
+      ],
+      "status": 200
+    },
+    "tools": {
+      "url": "http://192.168.10.104:3010/network/tools",
+      "titles": [
+        "网络调试工具",
+        "Ping / DNS",
+        "子网计算",
+        "常用命令"
+      ],
+      "buttons": [
+        "客户",
+        "销售",
+        "维修与工程",
+        "资料",
+        "仓库",
+        "报表与系统",
+        "办公台",
+        "柜台台",
+        "手机版",
+        "退出",
+        "查询",
+        "Ping",
+        "DNS 查询",
+        "计算"
+      ],
+      "labels": [
+        "目标",
+        "IP",
+        "掩码"
+      ],
+      "hasPing": true,
+      "hasDns": true,
+      "hasSubnet": true,
+      "hasCalc": true,
+      "pingPlaceholder": "192.168.1.1 或 www.baidu.com",
+      "visibleText": "店\n\n电脑店系统\n\n石湾焯智电脑\n\n工作台\n总览\n客户\n客户档案\n客户网络\n对账单\n收款单\n销售\n维修与工程\n资料\n仓库\n报表与系统\n\n当前系统由 石湾焯智电脑 完成\n\n页面\n\n办公台\n柜台台\n手机版\n退出\n查询\n总览\n知识库\n客户\n页面\n网络调试工具\n\nPing、DNS、子网计算、现场常用命令\n\nPing / DNS\n从本机服务器探测客户地址，只允许 IP 或主机名。\n目标\nPing\nDNS 查询\n结果会显示在这里\n子网计算\n划分固定段和 DHCP 段时用。\nIP\n掩码\n计算\n填 IP 和 24 位掩码后计算\n常用命令\n到客户现场在电脑上执行，不是扫描别人的网。\n\n本机地址\n\nWin：ipconfig /all\n\nLinux：ip addr\n\n清 DNS 缓存\n\nWin：ipconfig /flushdns\n\nLinux：systemd-resolve --flush-caches\n\n看网关\n\nWin：ipconfig | findstr /i gateway\n\nLinux：ip route\n\nPing 网关\n\nWin：ping -n 4 网关IP\n\nLinux：ping -c 4 网关IP\n\n路由跟踪\n\nWin：tracert 223.5.5.5\n\nLinux：traceroute 223.5.5.5\n\n查域名\n\nWin：nslookup www.baidu.com\n\nLinux：dig www.baidu.com\n\n邻居表\n\nWin：arp -a\n\nLinux：ip neigh\n\n端口占用\n\nWin：netstat -ano | findstr :80\n\nLinux：ss -lntp | grep :80"
+    }
+  },
+  "pass2": {
+    "knowledge": {
+      "queryUsed": "打印机",
+      "title": "打印机脱机、打不出来",
+      "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+      "images": []
+    },
+    "customer": {
+      "customer": {
+        "href": "/customers/cmtz8kyis0000zkr2ugba8tk1",
+        "name": "【关卡C】手机建档",
+        "walkIn": false
+      },
+      "id": "cmtz8kyis0000zkr2ugba8tk1",
+      "fields": {
+        "missing": false,
+        "h2": "网络资料",
+        "headings": [
+          "网络资料",
+          "宽带账号",
+          "网络设备",
+          "IP 地址"
+        ],
+        "labels": [
+          "宽带账号",
+          "密码",
+          "接入号",
+          "运营商",
+          "VLAN",
+          "位置",
+          "点位",
+          "备注",
+          "设备名称",
+          "管理 IP",
+          "类型",
+          "厂商",
+          "协议",
+          "端口",
+          "用户名",
+          "Enable 密码",
+          "型号",
+          "序列号",
+          "描述",
+          "IP",
+          "掩码",
+          "用途",
+          "挂到设备"
+        ],
+        "cards": [
+          "网络资料",
+          "宽带账号",
+          "网络设备",
+          "IP 地址"
+        ],
+        "textSample": "网络资料\n调试工具\n接口 JSON\n宽带账号\n账号、密码、接入号、位置。改完后网络页自动同一份数据。\n宽带账号\n密码\n看\n接入号\n运营商\nVLAN\n位置\n点位\n不指定点位\n默认点位\n备注\n添加宽带\n网络设备\n交换机 / 路由 / 光猫。字段对齐常见运维台账。\n设备名称\n管理 IP\n类型\n交换机\n路由器\n防火墙\n无线控制器\n光猫/ONU\n无线AP\n其他\n厂商\n华为\n华三\n锐捷\n思科\n中兴\nTP-LINK\n海康\n其他\n协议\nSSH\nTelnet\nHTTP/Web\n端口\n用户名\n密码\nEnable 密码\n型号\n序列号\n位置\n点位\n不指定点位\n默认点位\n描述\n添加设备\nIP 地址\n网关、打印机、监控等固定地址，避免和 DHCP 打架。\nIP\n掩码\n用途\n挂到设备\n不关联\n点位\n不指定点位\n默认点位\n备注\n添加地址"
+      },
+      "json": {
+        "customer": {
+          "id": "cmtz8kyis0000zkr2ugba8tk1",
+          "code": "C0013",
+          "name": "【关卡C】手机建档",
+          "phone": "13900009113",
+          "address": ""
+        },
+        "sites": [
+          {
+            "id": "cmtz8kyj00001zkr2oob87og3",
+            "name": "默认点位",
+            "address": ""
+          }
+        ],
+        "accounts": [],
+        "devices": [],
+        "ips": []
+      },
+      "keys": [
+        "customer",
+        "customer.id",
+        "customer.code",
+        "customer.name",
+        "customer.phone",
+        "customer.address",
+        "sites",
+        "sites",
+        "sites[].id",
+        "sites[].name",
+        "sites[].address",
+        "accounts",
+        "accounts",
+        "devices",
+        "devices",
+        "ips",
+        "ips"
+      ],
+      "status": 200
+    },
+    "tools": {
+      "url": "http://192.168.10.104:3010/network/tools",
+      "titles": [
+        "网络调试工具",
+        "Ping / DNS",
+        "子网计算",
+        "常用命令"
+      ],
+      "buttons": [
+        "客户",
+        "销售",
+        "维修与工程",
+        "资料",
+        "仓库",
+        "报表与系统",
+        "办公台",
+        "柜台台",
+        "手机版",
+        "退出",
+        "查询",
+        "Ping",
+        "DNS 查询",
+        "计算"
+      ],
+      "labels": [
+        "目标",
+        "IP",
+        "掩码"
+      ],
+      "hasPing": true,
+      "hasDns": true,
+      "hasSubnet": true,
+      "hasCalc": true,
+      "pingPlaceholder": "192.168.1.1 或 www.baidu.com",
+      "visibleText": "店\n\n电脑店系统\n\n石湾焯智电脑\n\n工作台\n总览\n客户\n客户档案\n客户网络\n对账单\n收款单\n销售\n维修与工程\n资料\n仓库\n报表与系统\n\n当前系统由 石湾焯智电脑 完成\n\n页面\n\n办公台\n柜台台\n手机版\n退出\n查询\n总览\n知识库\n客户\n页面\n网络调试工具\n\nPing、DNS、子网计算、现场常用命令\n\nPing / DNS\n从本机服务器探测客户地址，只允许 IP 或主机名。\n目标\nPing\nDNS 查询\n结果会显示在这里\n子网计算\n划分固定段和 DHCP 段时用。\nIP\n掩码\n计算\n填 IP 和 24 位掩码后计算\n常用命令\n到客户现场在电脑上执行，不是扫描别人的网。\n\n本机地址\n\nWin：ipconfig /all\n\nLinux：ip addr\n\n清 DNS 缓存\n\nWin：ipconfig /flushdns\n\nLinux：systemd-resolve --flush-caches\n\n看网关\n\nWin：ipconfig | findstr /i gateway\n\nLinux：ip route\n\nPing 网关\n\nWin：ping -n 4 网关IP\n\nLinux：ping -c 4 网关IP\n\n路由跟踪\n\nWin：tracert 223.5.5.5\n\nLinux：traceroute 223.5.5.5\n\n查域名\n\nWin：nslookup www.baidu.com\n\nLinux：dig www.baidu.com\n\n邻居表\n\nWin：arp -a\n\nLinux：ip neigh\n\n端口占用\n\nWin：netstat -ano | findstr :80\n\nLinux：ss -lntp | grep :80"
+    }
+  }
+}

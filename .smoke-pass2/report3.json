@@ -1,0 +1,444 @@
+{
+  "titleCount": 83,
+  "titles": [
+    {
+      "href": "/knowledge/cmty26ye7000848r2i4n1p66z",
+      "title": "【全测09120723】开机报警（已改）"
+    },
+    {
+      "href": "/knowledge/cmty2dghe0008i4r205gstly5",
+      "title": "【全测09120728】开机报警（已改）"
+    },
+    {
+      "href": "/knowledge/cmty2dovr0008xwr28ty4p448",
+      "title": "【全测09120729】开机报警（已改）"
+    },
+    {
+      "href": "/knowledge/cmtx0qhdl00w9h8r2ehn14qc1",
+      "title": "重装 Windows：备份、U 盘、激活"
+    },
+    {
+      "href": "/knowledge/cmtx0qhdr00wah8r22vhepmkn",
+      "title": "蓝屏：先记代码再换件"
+    },
+    {
+      "href": "/knowledge/cmtx0qhdx00wbh8r2ksnzuyu1",
+      "title": "开机慢、卡顿：先分清硬盘还是软件"
+    },
+    {
+      "href": "/knowledge/cmtx0qhe300wch8r2nag9ez4a",
+      "title": "驱动装错、设备管理器黄叹号"
+    },
+    {
+      "href": "/knowledge/cmtx0qheb00wdh8r2a61ic5zi",
+      "title": "Office 打不开、提示未授权"
+    },
+    {
+      "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+      "title": "打印机脱机、打不出来"
+    },
+    {
+      "href": "/knowledge/cmtx0qhen00wfh8r2w3v87kik",
+      "title": "重装后微信/QQ 聊天记录没了"
+    },
+    {
+      "href": "/knowledge/cmtx0qhet00wgh8r2hx0zqyh3",
+      "title": "电脑显示未识别网络 / 无 Internet"
+    },
+    {
+      "href": "/knowledge/cmtx0qhez00whh8r27n1tl088",
+      "title": "Wi-Fi 能搜到连不上或反复掉"
+    },
+    {
+      "href": "/knowledge/cmtx0qhf500wih8r2fsyf5o3b",
+      "title": "网线、水晶头、面板无链路"
+    },
+    {
+      "href": "/knowledge/cmtx0qhfd00wjh8r28atkzsx0",
+      "title": "IP 冲突、打印机/监控抢地址"
+    },
+    {
+      "href": "/knowledge/cmtx0qhfj00wkh8r27plszata",
+      "title": "网速慢：先测本机再怪宽带"
+    },
+    {
+      "href": "/knowledge/cmtxylax801n7m0r29h6198qt",
+      "title": "客户反映办公电脑无法上网。检查为网卡驱动异常，重装网卡驱动并更换导热硅脂后恢复。"
+    },
+    {
+      "href": "/knowledge/cmty007zh01nrm0r22s4m1tj3",
+      "title": "布线安装摄像头，用库存网线。"
+    },
+    {
+      "href": "/knowledge/cmtx0qhfp00wlh8r2qdkrem0o",
+      "title": "开机无显示（黑屏有电）"
+    },
+    {
+      "href": "/knowledge/cmtx0qhfw00wmh8r2utn4sib5",
+      "title": "内存不兼容、对不了 XMP"
+    },
+    {
+      "href": "/knowledge/cmtx0qhg200wnh8r2ktvj733x",
+      "title": "CPU 温度高、过热关机"
+    },
+    {
+      "href": "/knowledge/cmtx0qhga00woh8r2fc7f7eg7",
+      "title": "电源功率不够、开机跳闸或重启"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgh00wph8r2paczgtp1",
+      "title": "硬盘/SSD 认不到"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgp00wqh8r24ssbncl7",
+      "title": "独显不输出、驱动装完黑屏"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgu00wrh8r2wl5bf5ic",
+      "title": "接口认错：775 到 1851、AM4/AM5"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh000wsh8r2v7hxhqha",
+      "title": "保修怎么看：盒装、散片、店保、品牌保"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh700wth8r2vv64lhl5",
+      "title": "收机必问：密码、备份、有没有重要资料"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhd00wuh8r2csujcvu7",
+      "title": "装机防静电、拧螺丝、走线"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhj00wvh8r216mskdan",
+      "title": "中招：主页被劫持、弹广告、矿"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhp00wwh8r2cqxxj75w",
+      "title": "报价话术：检测费、修不好、换件差价"
+    },
+    {
+      "href": "/knowledge/cmtx0qhga00woh8r2fc7f7eg7",
+      "title": "电源功率不够、开机跳闸或重启"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgh00wph8r2paczgtp1",
+      "title": "硬盘/SSD 认不到"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgp00wqh8r24ssbncl7",
+      "title": "独显不输出、驱动装完黑屏"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgu00wrh8r2wl5bf5ic",
+      "title": "接口认错：775 到 1851、AM4/AM5"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh000wsh8r2v7hxhqha",
+      "title": "保修怎么看：盒装、散片、店保、品牌保"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh700wth8r2vv64lhl5",
+      "title": "收机必问：密码、备份、有没有重要资料"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhd00wuh8r2csujcvu7",
+      "title": "装机防静电、拧螺丝、走线"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhj00wvh8r216mskdan",
+      "title": "中招：主页被劫持、弹广告、矿"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhp00wwh8r2cqxxj75w",
+      "title": "报价话术：检测费、修不好、换件差价"
+    },
+    {
+      "href": "/knowledge/cmtx0qhga00woh8r2fc7f7eg7",
+      "title": "电源功率不够、开机跳闸或重启"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgh00wph8r2paczgtp1",
+      "title": "硬盘/SSD 认不到"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgp00wqh8r24ssbncl7",
+      "title": "独显不输出、驱动装完黑屏"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgu00wrh8r2wl5bf5ic",
+      "title": "接口认错：775 到 1851、AM4/AM5"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh000wsh8r2v7hxhqha",
+      "title": "保修怎么看：盒装、散片、店保、品牌保"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh700wth8r2vv64lhl5",
+      "title": "收机必问：密码、备份、有没有重要资料"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhd00wuh8r2csujcvu7",
+      "title": "装机防静电、拧螺丝、走线"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhj00wvh8r216mskdan",
+      "title": "中招：主页被劫持、弹广告、矿"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhp00wwh8r2cqxxj75w",
+      "title": "报价话术：检测费、修不好、换件差价"
+    },
+    {
+      "href": "/knowledge/cmtx0qhga00woh8r2fc7f7eg7",
+      "title": "电源功率不够、开机跳闸或重启"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgh00wph8r2paczgtp1",
+      "title": "硬盘/SSD 认不到"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgp00wqh8r24ssbncl7",
+      "title": "独显不输出、驱动装完黑屏"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgu00wrh8r2wl5bf5ic",
+      "title": "接口认错：775 到 1851、AM4/AM5"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh000wsh8r2v7hxhqha",
+      "title": "保修怎么看：盒装、散片、店保、品牌保"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh700wth8r2vv64lhl5",
+      "title": "收机必问：密码、备份、有没有重要资料"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhd00wuh8r2csujcvu7",
+      "title": "装机防静电、拧螺丝、走线"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhj00wvh8r216mskdan",
+      "title": "中招：主页被劫持、弹广告、矿"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhp00wwh8r2cqxxj75w",
+      "title": "报价话术：检测费、修不好、换件差价"
+    },
+    {
+      "href": "/knowledge/cmtx0qhga00woh8r2fc7f7eg7",
+      "title": "电源功率不够、开机跳闸或重启"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgh00wph8r2paczgtp1",
+      "title": "硬盘/SSD 认不到"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgp00wqh8r24ssbncl7",
+      "title": "独显不输出、驱动装完黑屏"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgu00wrh8r2wl5bf5ic",
+      "title": "接口认错：775 到 1851、AM4/AM5"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh000wsh8r2v7hxhqha",
+      "title": "保修怎么看：盒装、散片、店保、品牌保"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh700wth8r2vv64lhl5",
+      "title": "收机必问：密码、备份、有没有重要资料"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhd00wuh8r2csujcvu7",
+      "title": "装机防静电、拧螺丝、走线"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhj00wvh8r216mskdan",
+      "title": "中招：主页被劫持、弹广告、矿"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhp00wwh8r2cqxxj75w",
+      "title": "报价话术：检测费、修不好、换件差价"
+    },
+    {
+      "href": "/knowledge/cmtx0qhga00woh8r2fc7f7eg7",
+      "title": "电源功率不够、开机跳闸或重启"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgh00wph8r2paczgtp1",
+      "title": "硬盘/SSD 认不到"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgp00wqh8r24ssbncl7",
+      "title": "独显不输出、驱动装完黑屏"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgu00wrh8r2wl5bf5ic",
+      "title": "接口认错：775 到 1851、AM4/AM5"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh000wsh8r2v7hxhqha",
+      "title": "保修怎么看：盒装、散片、店保、品牌保"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh700wth8r2vv64lhl5",
+      "title": "收机必问：密码、备份、有没有重要资料"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhd00wuh8r2csujcvu7",
+      "title": "装机防静电、拧螺丝、走线"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhj00wvh8r216mskdan",
+      "title": "中招：主页被劫持、弹广告、矿"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhp00wwh8r2cqxxj75w",
+      "title": "报价话术：检测费、修不好、换件差价"
+    },
+    {
+      "href": "/knowledge/cmtx0qhga00woh8r2fc7f7eg7",
+      "title": "电源功率不够、开机跳闸或重启"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgh00wph8r2paczgtp1",
+      "title": "硬盘/SSD 认不到"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgp00wqh8r24ssbncl7",
+      "title": "独显不输出、驱动装完黑屏"
+    },
+    {
+      "href": "/knowledge/cmtx0qhgu00wrh8r2wl5bf5ic",
+      "title": "接口认错：775 到 1851、AM4/AM5"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh000wsh8r2v7hxhqha",
+      "title": "保修怎么看：盒装、散片、店保、品牌保"
+    },
+    {
+      "href": "/knowledge/cmtx0qhh700wth8r2vv64lhl5",
+      "title": "收机必问：密码、备份、有没有重要资料"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhd00wuh8r2csujcvu7",
+      "title": "装机防静电、拧螺丝、走线"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhj00wvh8r216mskdan",
+      "title": "中招：主页被劫持、弹广告、矿"
+    },
+    {
+      "href": "/knowledge/cmtx0qhhp00wwh8r2cqxxj75w",
+      "title": "报价话术：检测费、修不好、换件差价"
+    }
+  ],
+  "withKw": [
+    {
+      "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+      "title": "打印机脱机、打不出来"
+    },
+    {
+      "href": "/knowledge/cmtx0qhfd00wjh8r28atkzsx0",
+      "title": "IP 冲突、打印机/监控抢地址"
+    }
+  ],
+  "articles": [
+    {
+      "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+      "title": "打印机脱机、打不出来",
+      "textareas": [
+        {
+          "i": 0,
+          "len": 21,
+          "head": "脱机、队列卡住、电脑能看到打印机但没反应。",
+          "hasMd": false
+        },
+        {
+          "i": 1,
+          "len": 158,
+          "head": "1. 打印机本身能否打测试页，分清是机器坏还是电脑问题。\n2. 取消脱机、清打印队列、重启 Print Spooler。\n3. USB 换口换线；网络机看 IP 是否变了，重新添加 TCP/IP 端口。\n4. 驱动用型号对应的，Win11 不要硬装 Win7 包。\n5. 共享打印：关客户电脑休眠，检查工作组/权限。",
+          "hasMd": false
+        }
+      ],
+      "imgs": [],
+      "hasImgTag": false,
+      "hasMarkdownVisible": true
+    },
+    {
+      "href": "/knowledge/cmtx0qhfd00wjh8r28atkzsx0",
+      "title": "IP 冲突、打印机/监控抢地址",
+      "textareas": [
+        {
+          "i": 0,
+          "len": 26,
+          "head": "提示 IP 冲突、某台电脑偶发掉线、摄像头时隐时现。",
+          "hasMd": false
+        },
+        {
+          "i": 1,
+          "len": 111,
+          "head": "1. 路由器 DHCP 范围不要和手动 IP 重叠，预留静态段。\n2. 监控、打印机、NAS 用固定 IP 并写标签。\n3. 两台路由都开 DHCP 是通病，下级改桥接或关 DHCP。\n4. 改完让客户重启一次光猫和路由。",
+          "hasMd": false
+        }
+      ],
+      "imgs": [],
+      "hasImgTag": false,
+      "hasMarkdownVisible": true
+    }
+  ],
+  "xingchen": {
+    "name": "星辰网络",
+    "fields": [
+      "宽带账号",
+      "密码",
+      "接入号",
+      "运营商",
+      "VLAN",
+      "位置",
+      "点位",
+      "备注",
+      "设备名称",
+      "管理 IP",
+      "类型",
+      "厂商",
+      "协议",
+      "端口",
+      "用户名",
+      "密码",
+      "Enable 密码",
+      "型号",
+      "序列号",
+      "位置",
+      "点位",
+      "描述",
+      "IP",
+      "掩码",
+      "用途",
+      "挂到设备",
+      "点位",
+      "备注"
+    ],
+    "apiStatus": 200,
+    "json": {
+      "customer": {
+        "id": "cmtvno7zt0004tcr2gfr93wmg",
+        "code": "C0002",
+        "name": "星辰网络",
+        "phone": "13800000000",
+        "address": "示例路 1 号"
+      },
+      "sites": [
+        {
+          "id": "seed-site-1",
+          "name": "总部办公楼",
+          "address": "示例路 1 号"
+        }
+      ],
+      "accounts": [],
+      "devices": [],
+      "ips": []
+    }
+  }
+}

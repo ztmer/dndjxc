@@ -1,0 +1,214 @@
+{
+  "allPass": true,
+  "checks": [
+    {
+      "id": "login",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/",
+      "detail": {
+        "afterLogin": "http://192.168.10.104:3010/"
+      }
+    },
+    {
+      "id": "search-三层-round1",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/knowledge?q=%E4%B8%89%E5%B1%82",
+      "detail": {
+        "hitTitle": "三层交换机：VLAN、网关、上不了网",
+        "hitHref": "/knowledge/cmu1po9fy000be2lsumjsj0g6",
+        "empty": false,
+        "titles": [
+          "三层交换机：VLAN、网关、上不了网"
+        ]
+      }
+    },
+    {
+      "id": "search-三层-round2",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/knowledge?q=%E4%B8%89%E5%B1%82",
+      "detail": {
+        "hitTitle": "三层交换机：VLAN、网关、上不了网",
+        "hitHref": "/knowledge/cmu1po9fy000be2lsumjsj0g6",
+        "empty": false,
+        "titles": [
+          "三层交换机：VLAN、网关、上不了网"
+        ]
+      }
+    },
+    {
+      "id": "article-三层交换机",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/knowledge/cmu1po9fy000be2lsumjsj0g6",
+      "detail": {
+        "expectSrc": "/knowledge/switch-3layer.svg",
+        "srcOk": true,
+        "loaded": true,
+        "h1": "三层交换机：VLAN、网关、上不了网",
+        "imgs": [
+          {
+            "alt": "三层转发",
+            "src": "/knowledge/switch-3layer.svg",
+            "complete": true,
+            "nw": 300,
+            "nh": 128,
+            "broken": false
+          },
+          {
+            "alt": "地址规划",
+            "src": "/knowledge/ip-segments.svg",
+            "complete": true,
+            "nw": 300,
+            "nh": 111,
+            "broken": false
+          }
+        ],
+        "mdSrc": [
+          "/knowledge/switch-3layer.svg",
+          "/knowledge/ip-segments.svg"
+        ]
+      }
+    },
+    {
+      "id": "search-脱机",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/knowledge?q=%E8%84%B1%E6%9C%BA",
+      "detail": {
+        "href": "/knowledge/cmtx0qheh00weh8r2q00eno88",
+        "title": "打印机脱机、打不出来"
+      }
+    },
+    {
+      "id": "article-打印机脱机",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/knowledge/cmtx0qheh00weh8r2q00eno88",
+      "detail": {
+        "expectSrc": "/knowledge/printer-paper-path.svg",
+        "srcOk": true,
+        "loaded": true,
+        "h1": "打印机脱机、打不出来",
+        "imgs": [
+          {
+            "alt": "激光机走纸",
+            "src": "/knowledge/printer-paper-path.svg",
+            "complete": true,
+            "nw": 300,
+            "nh": 118,
+            "broken": false
+          }
+        ],
+        "mdSrc": [
+          "/knowledge/printer-paper-path.svg"
+        ]
+      }
+    },
+    {
+      "id": "static-/knowledge/switch-3layer.svg",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/knowledge/switch-3layer.svg",
+      "detail": {
+        "status": 200,
+        "contentType": "image/svg+xml",
+        "len": 847
+      }
+    },
+    {
+      "id": "static-/knowledge/printer-paper-path.svg",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/knowledge/printer-paper-path.svg",
+      "detail": {
+        "status": 200,
+        "contentType": "image/svg+xml",
+        "len": 1061
+      }
+    },
+    {
+      "id": "settings-init",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/settings/init",
+      "detail": {
+        "httpStatus": 200,
+        "h1": "系统初始化"
+      }
+    },
+    {
+      "id": "network-tools",
+      "pass": true,
+      "url": "http://192.168.10.104:3010/network/tools",
+      "detail": {
+        "httpStatus": 200,
+        "h1": "网络调试工具",
+        "buttons": [
+          "总览",
+          "客户",
+          "客户档案",
+          "客户网络",
+          "对账单",
+          "收款单",
+          "销售",
+          "销售开单",
+          "销售退货",
+          "组装配置",
+          "维修与工程",
+          "工单",
+          "工单退料",
+          "合同",
+          "工程",
+          "临时工",
+          "资料",
+          "产品目录",
+          "知识库"
+        ]
+      }
+    }
+  ],
+  "switchArt": {
+    "url": "http://192.168.10.104:3010/knowledge/cmu1po9fy000be2lsumjsj0g6",
+    "imgs": [
+      {
+        "alt": "三层转发",
+        "src": "/knowledge/switch-3layer.svg",
+        "complete": true,
+        "nw": 300,
+        "nh": 128,
+        "broken": false
+      },
+      {
+        "alt": "地址规划",
+        "src": "/knowledge/ip-segments.svg",
+        "complete": true,
+        "nw": 300,
+        "nh": 111,
+        "broken": false
+      }
+    ]
+  },
+  "printerArt": {
+    "url": "http://192.168.10.104:3010/knowledge/cmtx0qheh00weh8r2q00eno88",
+    "imgs": [
+      {
+        "alt": "激光机走纸",
+        "src": "/knowledge/printer-paper-path.svg",
+        "complete": true,
+        "nw": 300,
+        "nh": 118,
+        "broken": false
+      }
+    ]
+  },
+  "staticFiles": [
+    {
+      "path": "/knowledge/switch-3layer.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "len": 847,
+      "svg": true
+    },
+    {
+      "path": "/knowledge/printer-paper-path.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "len": 1061,
+      "svg": true
+    }
+  ]
+}
