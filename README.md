@@ -1,6 +1,6 @@
-# 电脑店系统
+# 电脑店系统（dndjxc）
 
-Next.js + Prisma（SQLite）+ shadcn/ui。业务规则见上级目录 `电脑店系统规划.md` 与 Skill `diannaodian`。
+电脑店进销存。Next.js + Prisma（SQLite）+ shadcn/ui。业务规则见上级目录 `电脑店系统规划.md` 与 Skill `diannaodian`。
 
 ```bash
 npm install
